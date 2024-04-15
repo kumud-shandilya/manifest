@@ -1,0 +1,8 @@
+2024-04-15 15:43:38.054 +05:30 [INF] create workspace completed successfully. Response: {
+  "id": "c2ed8008-98fb-4d22-822d-3e3874217b9d",
+  "displayName": "dimagkidahi",
+  "description": "MyWorkspace",
+  "type": "Workspace",
+  "capacityId": "548a5d04-3759-47f9-bf4c-35340dee8cf2",
+  "correlationId": "eyJ0eXAiOiJ"
+}

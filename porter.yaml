@@ -1,0 +1,105 @@
+# This is the configuration for Porter
+# You must define steps for each action, but the rest is optional
+# See https://getporter.org/bundle/manifest/file-format/ for a description of all the allowed fields in this document.
+# See https://getporter.org/author-bundles for documentation on how to configure your bundle.
+# Uncomment out the sections below to take full advantage of what Porter can do!
+
+# Optional indicator of the resource type of this file
+schemaType: Bundle
+
+# Version of the porter.yaml schema used by this file.
+schemaVersion: 1.0.1
+
+# Name of the bundle
+name: fabricbundle_40
+
+# Version of the bundle. Change this each time you modify a published bundle.
+version: 0.1.0
+
+# Description of the bundle and what it does.
+description: "An example Porter configuration"
+
+# Registry where the bundle is published to by default
+registry: "localhost:5000"
+
+# If you want to customize the Dockerfile in use, uncomment the line below and update the referenced file. 
+# See https://getporter.org/bundle/custom-dockerfile/
+dockerfile: template.Dockerfile
+
+# outputs:
+#   - name: ID
+#     type: string
+#     sensitive: false
+#     applyTo:
+#       - install
+# parameters: 
+#   - name: token
+#     type: string
+#   - name: workspaceDisplayName
+#     type: string
+#   - name: workspaceDescription
+#     type: string
+#   - name: capacityId
+#     type: string
+#   - name: itemDisplayName
+#     type: string
+#   - name: itemType
+#     type: string
+#   - name: workspaceId
+#     type: string
+# parameters:  
+#   - name: Licenses
+#     type: array
+#     default: 
+#       # {'skus':[{'skus': ['POWERAPPS_DEV','MS_CLOUD_HEALTHCARE'],'operator': 'AND'},{'skus': ['POWERAPPS_DEV','MCS_BizApps_Cloud_for_Sustainability_USL'],'operator': 'OR'}],'isRequired': true,'$comment': '<ApplicableClouds>PowerPlatform</ApplicableClouds><Source>ReadOnly</Source>'}
+#       - skus: ["POWERAPPS_DEV","MS_CLOUD_HEALTHCARE"]
+#         operator: AND
+#       - skus: ["POWERAPPS_DEV","MCS_BizApps_Cloud_for_Sustainability_USL"]
+#         operator: OR
+#     isRequired: true
+#     $comment: <ApplicableClouds>PowerPlatform</ApplicableClouds><Source>ReadOnly</Source>
+# Declare and optionally configure the mixins used by the bundle
+mixins:
+  - fabric
+install:
+  - fabric:
+      description: "Creating Workspace"
+      group: core.workspace
+      operation: CreateWorkspace
+      flags:
+        displayName: "whiteboard10"
+        type: "Workspace"
+        Token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSIsImtpZCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSJ9.eyJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3LyIsImlhdCI6MTcxMzE5MTE0OCwibmJmIjoxNzEzMTkxMTQ4LCJleHAiOjE3MTMxOTYzMjAsImFjY3QiOjAsImFjciI6IjEiLCJhaW8iOiJBZVFBRy84V0FBQUFoRHk1MGc2UHNETThLY0F3SE5WeWdDMDI0b0JpOVVqYXRBS3FqWHNQMk1kdHVuYVB5aWVwaGtBQm1KbjEvMGVYVWhIUTRxd0x3MHgzS3FCVFNvb2owaXMvUUN5aURMZHRxbkZSR2FMbXM2bFBwd2FvTG1ydHA2c3lIOFU0eXpIT0NHZ3EwV1hhZWZQN3djeEkzM3p2WUluR2IxdUhES04yWXZUUnZWWTJZTWxJQVZBNHlYbHlDOUdYS3lDK09rRkgrNkNRZjY1WERoZWNpNXdtWlQzN0cxS1hGUUUxUGNFOFdSU1NIQkFOcFI2Nm8yd1FxUXBUS2pnTUFEa3VHQzdqdHJtUkNSVHpyL1VjR3ZIT1hQRzFWTnZpeHQxSkhQN1ByVVVhMzNzU1VJMD0iLCJhbXIiOlsicnNhIiwibWZhIl0sImFwcGlkIjoiODcxYzAxMGYtNWU2MS00ZmIxLTgzYWMtOTg2MTBhN2U5MTEwIiwiYXBwaWRhY3IiOiIyIiwiY29udHJvbHMiOlsiYXBwX3JlcyJdLCJjb250cm9sc19hdWRzIjpbIjg3MWMwMTBmLTVlNjEtNGZiMS04M2FjLTk4NjEwYTdlOTExMCIsIjAwMDAwMDA5LTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMCIsIjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCJdLCJkZXZpY2VpZCI6ImVkYzdjZjYzLTdhZGMtNDY4Zi04OGIyLTk0N2I0MDg3NTY3YiIsImZhbWlseV9uYW1lIjoiU2hhbmRpbHlhIiwiZ2l2ZW5fbmFtZSI6Ikt1bXVkIiwiaXBhZGRyIjoiMTAzLjYuMTU3LjkwIiwibmFtZSI6Ikt1bXVkIFNoYW5kaWx5YSIsIm9pZCI6IjA5ODBkZWVkLTdlNGQtNGIzZC1iYzE4LWU0NDQzZGEyYzBiMCIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0yMTI3NTIxMTg0LTE2MDQwMTI5MjAtMTg4NzkyNzUyNy02OTQ0NDA3MiIsInB1aWQiOiIxMDAzMjAwMkMwNzFBMTk4IiwicmgiOiIwLkFSb0F2NGo1Y3ZHR3IwR1JxeTE4MEJIYlJ3a0FBQUFBQUFBQXdBQUFBQUFBQUFBYUFETS4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzaWduaW5fc3RhdGUiOlsiZHZjX21uZ2QiLCJkdmNfY21wIiwia21zaSJdLCJzdWIiOiJKamp3MWo5YVdFSzdCd2lSM0J3dWI0UnQxYVVaOUVpN2doQTlDdFluNG5BIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJrc2hhbmRpbHlhQG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJrc2hhbmRpbHlhQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ2SlFfSU9Lek9rbWN1UUQxY0NzREFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXX0.M8QRfoYGRJuYMkU6e-BrYqr2swRFQHOecT-tKv8jGbMvf4fg95e2emPKQAmr9ra-lPRfxJl-Mjq7h7LFSxDqND134rvkHXNdp2FZeVXgRA92QhTKku35r_zcClkneDgOQSBeE2vcVRihY4yhUCwnx1kAOnQ_gEeFHTpj08VSufD7xra2cJB6FI6IybLDio5OSOll9YNv_k2FMqb3TrDga9Yy89IORAujQ5pH2gThvZX-N0E3wdlupFqS9OcAtt_AVbPR-yQWYkWMkrAHVf4B02NGXxi7YIFuZ-8BoGXxzp8XNqKbQn-zM4k3QdUmBWiyAqHddQume0kjpX-A3CgGvw"
+        capacityId: "548a5d04-3759-47f9-bf4c-35340dee8cf2"
+        description: "MyWorkspace"
+        supress-output: "false"
+        correlationId: "eyJ0eXAiOiJ"
+      outputs:
+        - name: "workspace_id"
+          jsonPath: "$.id"
+  # - fabric:
+      # description: "Creating fabric Item"
+      # group: core.items
+      # operation: Create
+      # flags:
+      #   displayName: "Workspace Item"
+      #   type: "Warehouse"
+      #   workspaceid: "test"
+      #   definition: "{}" 
+      #   description: "My Warehouse"
+      # outputs:
+      #   - name: "item_id"
+      #     jsonPath: "$.id"
+
+upgrade:
+  - fabric: 
+      workspace: "<Worspace ID>"
+      token: "<Your Token>"
+      item: "<Item ID>"
+      arguments: {"displayName": "updatedname1", "description": "Item's New description"}
+
+uninstall:
+  - fabric: 
+      workspace: "<Worspace ID>"
+      token: "<Your Token>"
+      item: "<Item ID>"
