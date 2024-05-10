@@ -17,9 +17,14 @@ FROM --platform=linux/amd64 debian:stable-slim
 # PORTER_INIT
 WORKDIR /app
 
-COPY  --link --chmod=0755 CompositeSolution  /app
+# COPY  --link --chmod=0755 FabricCompositeSolution  /app
+# RUN apt-get update && apt-get install -y libicu-dev && rm -rf /var/lib/apt/lists/*
+# COPY  --link --chmod=0755 libicudata.so.68.2.0.9  /app
+# COPY  --link --chmod=0755 libicui18n.so.68.2.0.9  /app
+# COPY  --link --chmod=0755 libicuuc.so.68.2.0.9  /app
+# COPY  --link --chmod=0755 libmongocrypt.so  /app
 RUN echo $PATH
-ENV PATH="$PATH:/app"
+ENV PATH="$PATH:/cnab/app"
 RUN echo $PATH
 
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
